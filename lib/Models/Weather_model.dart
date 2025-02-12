@@ -2,9 +2,9 @@ class WeatherModel {
   final String cityName;
   final String date;
   final String? image;
-  final String temp;
-  final String maxTemp;
-  final String minTemp;
+  final double temp;
+  final double maxTemp;
+  final double minTemp;
   final String status;
 
   WeatherModel(
@@ -15,4 +15,14 @@ class WeatherModel {
       required this.maxTemp,
       required this.minTemp,
       required this.status});
+  factory WeatherModel.fromJson(json) {
+    return WeatherModel(
+      image: json['forecast']['forecastday'][0]['day']['condition']['icon'],
+        cityName: json['location']['name'],
+        date: json['current']['last_updated'],
+        temp: json['forecast']['forecastday'][0]['day']['avgtemp_c'],
+        maxTemp: json['forecast']['forecastday'][0]['day']['maxtemp_c'],
+        minTemp: json['forecast']['forecastday'][0]['day']['mintemp_c'],
+        status: json['forecast']['forecastday'][0]['day']['condition']['text']);
+  }
 }

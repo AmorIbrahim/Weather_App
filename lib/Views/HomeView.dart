@@ -9,18 +9,23 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
       appBar: AppBar(
-        title:  const Text("Weather"),
+        title: const Text("Weather"),
         actions: [
-          IconButton(onPressed: (){
-            Navigator.of(context).push(MaterialPageRoute(builder: (context){
-              return const SearchView();
-            }));
-          }, icon: const Icon(Icons.search_rounded))
+          IconButton(
+              onPressed: () {
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (context) {
+                  return const SearchView();
+                }));
+              },
+              icon: const Icon(Icons.search_rounded))
         ],
       ),
-      body: const WeatherInfoBody(),
+      body: weatherModel == null
+          ? const NoWeatherBody()
+          : const WeatherInfoBody(),
     );
   }
 }
