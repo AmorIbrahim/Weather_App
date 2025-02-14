@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:weatherapp/Views/SearchView.dart';
 
 import '../Widget/NoWeatherBody.dart';
-import '../Widget/WeatherInfoBody.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -23,9 +22,7 @@ class HomeView extends StatelessWidget {
               icon: const Icon(Icons.search_rounded))
         ],
       ),
-      body: weatherModel == null
-          ? const NoWeatherBody()
-          : const WeatherInfoBody(),
+      body: const NoWeatherBody()
     );
   }
 }
